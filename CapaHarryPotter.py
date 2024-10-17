@@ -23,8 +23,8 @@ while cap.isOpened():
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
     # Definir el rango de color de la tela (verde, en este caso) en HSV
-    lower_green = np.array([100, 150, 0])
-    upper_green = np.array([130, 255, 255])
+    lower_green = np.array([0, 1, 0])
+    upper_green = np.array([0, 255, 0])
 
     # Crear una máscara que detecta el área verde
     mask = cv2.inRange(hsv, lower_green, upper_green)
