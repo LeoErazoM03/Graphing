@@ -1,3 +1,4 @@
+```python
 import numpy as np
 import cv2 as cv
 
@@ -6,7 +7,6 @@ face_cascade = cv.CascadeClassifier(cv.data.haarcascades + 'haarcascade_frontalf
 
 # Cargar la máscara
 mask = cv.imread("C:/Users/leoda/Documents/Mascara.png", -1)
-
 
 # Función para superponer la máscara en la cara
 def overlay_mask(frame, mask, x, y, w, h):
@@ -57,3 +57,4 @@ while True:
 # Liberar la cámara y cerrar las ventanas
 cap.release()
 cv.destroyAllWindows()
+```
