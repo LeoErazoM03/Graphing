@@ -5,28 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08f5f94c-5028-4615-9382-5c876245176f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/AnalizandoMasColores.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnalizingColors.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Apuntes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CapaHarryPotter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FiltroSnapChat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImagenGiratoria.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libreriacv2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mascara.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Redfútbol.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SegmentacionColor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bolapingpong.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/caballo.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clases.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deteccionCara.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elipseFigura.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/man1.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pixelart.py" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Python/FiguraIsometrica.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/filtroConvolución.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Markdown/AnalizandoMasColores.md" beforeDir="false" afterPath="$PROJECT_DIR$/Markdown/AnalizandoMasColores.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,6 +36,9 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.Convert_to_md.executor": "Run",
+    "Python.FiguraIsometrica.executor": "Run",
+    "Python.deteccionCara.executor": "Run",
+    "Python.filtroConvolución.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/leoda/OneDrive - Instituto Tecnológico de Morelia/Universidad/6to Semestre/Convert_to_md.py",
@@ -71,7 +68,11 @@
       <option name="presentableId" value="Default" />
       <updated>1729863286605</updated>
       <workItem from="1729863287463" duration="661000" />
-      <workItem from="1729863992824" duration="773000" />
+      <workItem from="1729863992824" duration="2179000" />
+      <workItem from="1730143623771" duration="1618000" />
+      <workItem from="1730228701204" duration="2046000" />
+      <workItem from="1730316308584" duration="1994000" />
+      <workItem from="1730402924758" duration="1100000" />
     </task>
     <servers />
   </component>
@@ -79,6 +80,9 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Graficación$Convert_to_md.coverage" NAME="Convert_to_md Coverage Results" MODIFIED="1729864439843" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
+    <SUITE FILE_PATH="coverage/Graficación$Convert_to_md.coverage" NAME="Convert_to_md Coverage Results" MODIFIED="1729864773824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
+    <SUITE FILE_PATH="coverage/Graficación$FiguraIsometrica.coverage" NAME="FiguraIsometrica Coverage Results" MODIFIED="1730403744859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Python" />
+    <SUITE FILE_PATH="coverage/Graficación$deteccionCara.coverage" NAME="deteccionCara Coverage Results" MODIFIED="1730316400616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Python" />
+    <SUITE FILE_PATH="coverage/Graficación$filtroConvolución.coverage" NAME="filtroConvolución Coverage Results" MODIFIED="1730144998826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
