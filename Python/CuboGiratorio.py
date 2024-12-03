@@ -1,14 +1,14 @@
 import glfw
 from OpenGL.GL import glClearColor, glEnable, glClear, glLoadIdentity, glTranslatef, glRotatef, glMatrixMode
 from OpenGL.GL import glBegin, glColor3f, glVertex3f, glEnd, glFlush, glViewport
-from OpenGL.GL import GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT, GL_DEPTH_TEST, GL_QUADS, GL_PROJECTION, GL_MODELVIEW
+from OpenGL.GL import GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT, GL_DEPTH_TEST, GL_TRIANGLES, GL_PROJECTION, GL_MODELVIEW
 from OpenGL.GLU import gluPerspective
 import sys
 
 # Variables globales
 window = None
 angle_x, angle_y = 0, 0  # Ángulos de rotación en los ejes X e Y
-last_x, last_y = None, None  # Última posición del ratón para calcular la diferencia
+velocidad_x, velocidad_y = 0.05, 0.05  # Velocidad de rotación
 
 def init():
     # Configuración inicial de OpenGL
@@ -23,80 +23,65 @@ def init():
     # Cambiar a la matriz de modelo para los objetos
     glMatrixMode(GL_MODELVIEW)
 
-def draw_cube():
+def draw_octahedron():
     global angle_x, angle_y
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)  # Limpiar pantalla y buffer de profundidad
 
-    # Configuración de la vista del cubo
+    # Configuración de la vista del octaedro
     glLoadIdentity()
-    glTranslatef(0.0, 0.0, -5)  # Alejar el cubo para que sea visible
-    glRotatef(angle_x, 1, 0, 0)   # Rotar el cubo en el eje X
-    glRotatef(angle_y, 0, 1, 0)   # Rotar el cubo en el eje Y
+    glTranslatef(0.0, 0.0, -5)  # Alejar el octaedro para que sea visible
+    glRotatef(angle_x, 1, 0, 0)   # Rotar el octaedro en el eje X
+    glRotatef(angle_y, 0, 1, 0)   # Rotar el octaedro en el eje Y
 
-    glBegin(GL_QUADS)  # Iniciar el cubo como un conjunto de caras (quads)
+    glBegin(GL_TRIANGLES)  # Iniciar el octaedro como un conjunto de caras triangulares
 
-    # Cada conjunto de cuatro vértices representa una cara del cubo
-    glColor3f(1.0, 0.0, 0.0)  # Rojo
-    glVertex3f( 1, 1,-1)
-    glVertex3f(-1, 1,-1)
-    glVertex3f(-1, 1, 1)
-    glVertex3f( 1, 1, 1)
+    # Vértices del octaedro
+    vertices = [
+        (0, 1, 0),   # Vértice superior
+        (-1, 0, -1), # Vértice inferior izquierda trasera
+        (1, 0, -1),  # Vértice inferior derecha trasera
+        (1, 0, 1),   # Vértice inferior derecha delantera
+        (-1, 0, 1),  # Vértice inferior izquierda delantera
+        (0, -1, 0)   # Vértice inferior
+    ]
 
-    glColor3f(0.0, 1.0, 0.0)  # Verde
-    glVertex3f( 1,-1, 1)
-    glVertex3f(-1,-1, 1)
-    glVertex3f(-1,-1,-1)
-    glVertex3f( 1,-1,-1)
+    # Colores para cada cara
+    colors = [
+        (1.0, 0.0, 0.0),  # Rojo
+        (0.0, 1.0, 0.0),  # Verde
+        (0.0, 0.0, 1.0),  # Azul
+        (1.0, 1.0, 0.0),  # Amarillo
+        (1.0, 0.0, 1.0),  # Magenta
+        (0.0, 1.0, 1.0),  # Cyan
+        (0.5, 0.5, 0.5),  # Gris
+        (1.0, 0.5, 0.0)   # Naranja
+    ]
 
-    glColor3f(0.0, 0.0, 1.0)  # Azul
-    glVertex3f( 1, 1, 1)
-    glVertex3f(-1, 1, 1)
-    glVertex3f(-1,-1, 1)
-    glVertex3f( 1,-1, 1)
+    # Caras del octaedro (en índices de vértices)
+    faces = [
+        (0, 1, 2),
+        (0, 2, 3),
+        (0, 3, 4),
+        (0, 4, 1),
+        (5, 2, 1),
+        (5, 3, 2),
+        (5, 4, 3),
+        (5, 1, 4)
+    ]
 
-    glColor3f(1.0, 1.0, 0.0)  # Amarillo
-    glVertex3f( 1,-1,-1)
-    glVertex3f(-1,-1,-1)
-    glVertex3f(-1, 1,-1)
-    glVertex3f( 1, 1,-1)
-
-    glColor3f(1.0, 0.0, 1.0)  # Magenta
-    glVertex3f(-1, 1, 1)
-    glVertex3f(-1, 1,-1)
-    glVertex3f(-1,-1,-1)
-    glVertex3f(-1,-1, 1)
-
-    glColor3f(0.0, 1.0, 1.0)  # Cyan
-    glVertex3f( 1, 1,-1)
-    glVertex3f( 1, 1, 1)
-    glVertex3f( 1,-1, 1)
-    glVertex3f( 1,-1,-1)
+    # Dibujar las caras del octaedro
+    for i, face in enumerate(faces):
+        glColor3f(*colors[i % len(colors)])
+        for vertex in face:
+            glVertex3f(*vertices[vertex])
 
     glEnd()
     glFlush()
 
     glfw.swap_buffers(window)  # Intercambiar buffers para animación suave
 
-def mouse_callback(window, xpos, ypos):
-    global angle_x, angle_y, last_x, last_y
-
-    # Si es la primera vez que movemos el ratón, inicializamos last_x y last_y
-    if last_x is None or last_y is None:
-        last_x, last_y = xpos, ypos
-
-    # Calcular las diferencias en el movimiento del ratón
-    dx = xpos - last_x
-    dy = ypos - last_y
-
-    # Ajustar los ángulos de rotación en función del movimiento del ratón
-    angle_x += dy * 0.1  # El factor 0.1 ajusta la sensibilidad
-    angle_y += dx * 0.1
-
-    # Actualizar las posiciones anteriores del ratón
-    last_x, last_y = xpos, ypos
-
 def main():
-    global window
+    global window, angle_x, angle_y, velocidad_x, velocidad_y
 
     # Inicializar GLFW
     if not glfw.init():
@@ -104,7 +89,7 @@ def main():
 
     # Crear ventana de GLFW
     width, height = 500, 500
-    window = glfw.create_window(width, height, "Cubo 3D Controlado por Ratón", None, None)
+    window = glfw.create_window(width, height, "Octaedro 3D Rotación Automática", None, None)
     if not window:
         glfw.terminate()
         sys.exit()
@@ -114,12 +99,11 @@ def main():
     glViewport(0, 0, width, height)
     init()
 
-    # Configurar el callback de ratón
-    glfw.set_cursor_pos_callback(window, mouse_callback)
-
     # Bucle principal
     while not glfw.window_should_close(window):
-        draw_cube()
+        angle_x += velocidad_x  # Incrementar ángulo de rotación en X según la velocidad
+        angle_y += velocidad_y  # Incrementar ángulo de rotación en Y según la velocidad
+        draw_octahedron()
         glfw.poll_events()
 
     glfw.terminate()  # Cerrar GLFW al salir
